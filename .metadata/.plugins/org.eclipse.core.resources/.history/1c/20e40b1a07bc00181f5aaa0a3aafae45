@@ -1,0 +1,38 @@
+package com.mycompany.java8;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class MainApp {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Runnable task = () -> { System.out.println("HEllo");
+		
+		try {
+			Thread.sleep(5000);
+			
+		} catch (InterruptedException ignored) {
+			
+		}
+		System.out.println("after sleep");
+		};
+		
+		//Old Way 
+		//Thread thread = new Thread(task);
+		//thread.start();
+		
+		//New Way
+		ExecutorService es = Executors.newFixedThreadPool(1);
+		es.execute(task);
+		es.execute(task);
+		
+		es.shutdown();
+		
+		
+		
+		
+
+	}
+
+}

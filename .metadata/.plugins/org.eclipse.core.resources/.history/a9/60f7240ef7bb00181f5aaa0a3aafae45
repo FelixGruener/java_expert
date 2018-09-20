@@ -1,0 +1,15 @@
+package com.mycompany.java8;
+
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+
+public class MainApp2 {
+
+	public static void main(String[] args) {
+		ZonedDateTime zonedDateTime = ZonedDateTime.now();
+		
+		zonedDateTime.withZoneSameInstant(ZoneId.of("America/Los_Angeles"));
+
+	}
+
+}

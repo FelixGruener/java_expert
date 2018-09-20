@@ -1,0 +1,92 @@
+package at.javatraining.java8.task1;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.OptionalDouble;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
+import com.mycompany.java8.Event;
+import com.mycompany.java8.EventType;
+
+public class MainApp {
+	public static void main(String[] args) {
+		List<Movie> movies = new ArrayList<>(); // you don't need any sample data to solve the exercises ;-)
+		
+		// TODO return all titles of action movies with Arnold Schwarzenegger as list.
+		
+		/*Movie movie = new Movie();
+		//contains uses equals 
+		movie.getActors().contains("Arnold");
+		
+		movies.stream()
+		.filter(movie->movie.getActors().contains("Arnold") 
+		.map(Event::getDescription) //Intermediate => STream<String>
+		.forEach(description -> System.out.println(description));*/
+		//Variant 1 using List.contains 
+		List<String> titles = movies.stream()
+			.filter(movie -> movie.getCategory() == Category.ACTION)
+			.filter(movie -> movie.getActors().contains(new Actor("Arnold","Schwarzenegger",null)))
+			.map(movie->movie.getTitle())
+			.collect(Collectors.toList());
+		
+		
+		
+		//Variant2 Using stream in stream 
+		List<String> titles2 = movies.stream()
+				.filter(movie -> movie.getCategory() == Category.ACTION)
+				.filter(movie -> movie.getActors().stream()
+						.anyMatch(
+								actor->"Arnold".equalsIgnoreCase(actor.getFirstName()) &&
+								"Schwarzenegger".equalsIgnoreCase(actor.getLastName())
+								)
+			    )			
+				.map(movie->movie.getTitle())
+				.collect(Collectors.toList());
+		
+		//Variant3 Using stream in stream with Predicate 
+		Predicate<Movie> movieContainsActorArnoldSchwarzenegger =
+				movie -> movie.getActors().stream()
+					.anyMatch(
+							actor->"Arnold".equalsIgnoreCase(actor.getFirstName()) &&
+							"Schwarzenegger".equalsIgnoreCase(actor.getLastName())
+							)
+		
+		
+				List<String> titles3 = movies.stream()
+						.filter(movie -> movie.getCategory() == Category.ACTION)
+						.filter(movieContainsActorArnoldSchwarzenegger
+					    )			
+						.map(movie->movie.getTitle())
+						.collect(Collectors.toList());
+		
+		
+		// TODO return average length of love stories produced in Bollywood.
+		OptionalDouble result1 = movies.stream()
+			.mapToInt(movie->movie.getCategory().equals(Category.LOVE_STORY))
+			.average();
+
+		// TODO does the database contain a drama that lasts shorter than 50 min?
+		boolean result2 = movies.stream()
+				.filter(movie->movie.getCategory().equals(Category.DRAMA))
+				.allMatch(movie->movie.getDuration() < 50);
+
+		// TODO how many movies with Christoph Waltz, not produced in hollywood are in the "database"?
+
+		// TODO return a list containing (title, corresponding actors as comma-separated string) objects for all comedies.
+
+		// TODO implement a method processMovies(...). it should be possible to pass the movie list,
+		// an optional (!) filter, a mapping function and the action to perform. the method should
+		// offer a parameter so that the caller can set if the list should be processed sequentially
+		// or parallel.
+	}
+	
+	
+	private static Predicate<Movie> movieContainsActorArnoldSchwarzenegger(String firstName,String lastName) {
+		return movie -> movie.getActors().stream()
+				.anyMatch(
+						actor->firstName.equalsIgnoreCase(actor.getFirstName()) &&
+						lastName.equalsIgnoreCase(actor.getLastName())
+						)
+	}
+}

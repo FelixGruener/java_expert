@@ -1,0 +1,38 @@
+package com.mycompany.rep;
+
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+
+
+/*
+----------
+Task 1
+----------
+Implement a method processNames(...). It should be possible to pass a list of names (of type String), a condition and the action which should be executed for each name to this method.
+=> condition: use Predicate<String> interface, method test(...)
+=> action: use Consumer<String> interface, method accept(...)
+
+----------
+Task 2
+----------
+Implement an event processor for which interested systems can register (also unregister). All registered systems will be informed about new events (events have a type, ...) - and maybe execute a specific action.
+=> Observer/Listener pattern
+
+*/
+
+public class Task1 {
+
+	public static void main(String[] args) {
+		
+		
+
+	}
+	
+	private static void processNames(List<String> names,Predicate<String> condition, Consumer<String> action) {
+		
+		//
+		
+	}
+
+}

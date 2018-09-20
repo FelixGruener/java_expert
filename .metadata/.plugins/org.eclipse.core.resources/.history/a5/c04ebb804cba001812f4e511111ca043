@@ -1,0 +1,23 @@
+package calculator;
+
+public class Calculator {
+	
+	
+	int calculate(int  number1, int number2) {
+		int sum;
+		sum = number1 + number2; 
+		return sum; 
+	}
+
+
+	public static void main(String[] args) {
+		
+		Calculator calc = new Calculator();
+		
+		int result = calc.calculate(5, 2);
+		
+		System.out.println(result);
+
+	}
+
+}

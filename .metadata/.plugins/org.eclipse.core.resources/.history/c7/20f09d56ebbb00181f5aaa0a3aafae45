@@ -1,0 +1,6 @@
+package at.javatraining.java8.task3;
+
+public class MainApp {
+	// read the text file "news.txt" and return all lines which contain "swisscom" (case ignored) and
+	// were published in 2018 as list of (title, date) objects
+}

@@ -1,0 +1,29 @@
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class MainApp2 {
+
+	public static void main(String[] args) {
+		Cache<String> cache = new Cache<>();
+		
+		cache.setCachedElement("abc");
+		
+		String text = cache.getCachedElement();
+		
+		System.out.print(text);
+		
+		
+		Map<String,List<String>> counties = new HashMap<>();
+		
+		counties.put("AT", Arrays.asList("No","Wien","..."));
+		counties.put("CH", Arrays.asList("Bern","Uri","..."));
+		
+		counties.get("CH").forEach(county->System.out.println(county));
+		
+			
+
+	}
+
+}

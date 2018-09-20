@@ -1,0 +1,41 @@
+package com.mycompany.java8;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
+import com.mycompany.java8.Event;
+import com.mycompany.java8.EventType;
+
+public class MainApp {
+
+	public static void main(String[] args) {
+		
+		
+		List<Event> events = Arrays.asList(
+				new Event(UUID.randomUUID(),EventType.SYSTEM,"system will be down in 10 mins"),
+				new Event(UUID.randomUUID(),EventType.APPLICATION,"New Application "),
+				new Event(UUID.randomUUID(),EventType.USER,"next Training ")
+				);
+		
+		//task: print all descriptions of SYSTEM events to console
+		//Type Stream of Event
+		events.stream()
+			.filter(event->event.getEventType().equals(EventType.SYSTEM)) //Predicate of Type event , it will remain in List if condition met 
+			.map(Event::getDescription) //Intermediate => STream<String>
+			.forEach(description -> System.out.println(description)); //STream<Event>
+		
+		//IMPORTANT: original list 'events' is not changed 
+		
+		//return all UUIDs of Application or USer in a LIst 
+		
+		events.stream()
+			.filter(event-> event.getEventType() == EventType.APPLICATION || 
+							event.getEventType() == EventType.USER)
+			.map(event->event.getUuid()) //STream of UUID, Stream<UUID>
+			.collect(Collectors.toList()); // will return a List of UUID, LIST<UUID>
+
+	}
+
+}

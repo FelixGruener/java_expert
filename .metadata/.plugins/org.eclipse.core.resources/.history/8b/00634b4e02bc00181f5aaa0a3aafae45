@@ -1,0 +1,41 @@
+package com.mycompany.java8;
+
+import java.util.Optional;
+
+public class MainApp {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Optional<String> name = getName("Max","Mustermann");
+		if (name.isPresent()) {
+			System.out.println(name.get());
+		}
+		
+		
+
+	}
+	
+	/*private static String getName(String firstName,String lastName) {
+		
+		if(firstName != null && lastName != null) {
+			return firstName + " " + lastName;
+		}
+		return null;
+		
+	}*/
+
+	//Better return Optional 
+	private static Optional<String> getName(String firstName,String lastName) {
+		
+		String name = null;
+		
+		if(firstName != null && lastName != null) {
+			name =  firstName + " " + lastName;
+		}
+		return Optional.ofNullable(name);
+		
+	}
+	
+	
+}

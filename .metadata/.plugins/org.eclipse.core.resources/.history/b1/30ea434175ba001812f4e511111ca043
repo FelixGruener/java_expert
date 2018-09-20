@@ -1,0 +1,12 @@
+package com.mycompany.java8;
+
+public class Programm implements myInterface{
+
+	@Override
+	public void execute() {
+	
+		
+	}
+	
+
+}

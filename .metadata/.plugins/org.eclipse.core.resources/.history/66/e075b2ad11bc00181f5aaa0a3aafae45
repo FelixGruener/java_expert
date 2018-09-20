@@ -1,0 +1,15 @@
+package com.mycompany.java8;
+
+public class MainApp {
+
+	public static void main(String[] args) throws Exception {
+		String className = "com.mycompany.java8.TestClass";
+		
+		Object obj = Class.forName(className).newInstance();
+		
+		TestClass testClass = (TestClass) obj;
+		
+		testClass.testMethod();
+	}
+
+}

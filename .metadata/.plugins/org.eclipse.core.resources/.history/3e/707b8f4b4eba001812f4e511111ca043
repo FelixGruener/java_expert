@@ -1,0 +1,13 @@
+package com.javatraining.java8;
+
+public class MainApp {
+
+	public static void main(String[] args) {
+		
+		Filter filter= new AverageFilter();
+		
+		System.out.println(filter.applyFilter(1,2));
+		
+	}
+
+}

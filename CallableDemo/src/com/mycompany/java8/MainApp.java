@@ -1,0 +1,82 @@
+package com.mycompany.java8;
+
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
+public class MainApp {
+
+	public static void main(String[] args) throws Exception {
+		// TODO Auto-generated method stub
+		Runnable task = () -> { System.out.println("HEllo");
+		
+		try {
+			Thread.sleep(5000);
+			
+		} catch (InterruptedException ignored) {
+			
+		}
+		System.out.println("after sleep");
+		};
+		
+		//Old Way 
+		//Thread thread = new Thread(task);
+		//thread.start();
+		//thread.join(); //blocks untill the Thread has been finished 
+		
+		
+		//New Way - use an Executor Service 
+		ExecutorService es = Executors.newFixedThreadPool(2);
+		es.execute(task);
+		es.execute(task);
+		
+		Callable<String> calcTask = () ->"Hello";
+		Future<String> future = es.submit(calcTask);
+		
+		if(future.isDone()) {
+			System.out.println(future.get()); //blocks until rsult can be returned 
+		}
+		
+		//executor when finds ressources it will calculate 
+		Future<Integer> result = es.submit(new AddTask(1,2));
+		System.out.println(result.get());
+		
+		
+		Future<Integer> result2 = es.submit(createAddTask(1,2));
+		
+		System.out.println(result2.get());
+		
+		System.out.println("MAin Thread reached");
+		
+		//STRG TASTE HALTEN UDN AUF FUNKTION ZEIGEN öffnet JAVA DOKUMENTATION 
+		//CTRL + SPACE will write out 
+		
+		es.shutdown();
+		
+		
+		//MAINTHREAD AND 2 OTHER THREADS , I GIVE YOU TASK 
+		
+		//SUBMIT TO QUEQUE , RESULT YOU MUST GET HANDE SO YOU CAN GET RESULT (FUTURE OBJEKT)
+		
+		//FUTURE IS THE CONTROLLING UNTIL SOMETHING IS DONE , RESULT GETS STORED IN FUTURE 
+		
+		//TASK RUNNABLE AND EXECUTE 
+		
+		// WHEN YOU HAVE SOMETHING TO RETURN 
+		
+		//USE CALLABLE : MAIN THREAD SLEEPS UNTILL FUTURE CAN RETURN RESULT 
+		
+		// YOU CAN SUBMIT RUNNABLE , YOU CAN CANCEL TASK 
+		
+		
+		
+
+	}
+	
+	private static Callable<Integer> createAddTask(int number1, int number2) {
+		return () -> number1 + number2;
+	}
+
+}

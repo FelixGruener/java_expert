@@ -1,0 +1,11 @@
+package com.javatraining.java8;
+
+public class AverageFilter implements Filter {
+
+	@Override
+	public double applyFilter(double... numbers) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

@@ -1,0 +1,86 @@
+package com.mycompany.java8;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
+import com.mycompany.java8.Event;
+import com.mycompany.java8.EventType;
+
+public class MainApp {
+
+	public static void main(String[] args) {
+		
+		
+		List<Event> events = Arrays.asList(
+				new Event(UUID.randomUUID(),EventType.SYSTEM,"system will be down in 10 mins"),
+				new Event(UUID.randomUUID(),EventType.APPLICATION,"New Application "),
+				new Event(UUID.randomUUID(),EventType.USER,"next Training ")
+				);
+		
+		//task: print all descriptions of SYSTEM events to console
+		//Type Stream of Event
+		events.stream()
+			.filter(event->event.getEventType().equals(EventType.SYSTEM)) //Predicate of Type event , it will remain in List if condition met 
+			.map(Event::getDescription) //Intermediate => STream<String>
+			.forEach(description -> System.out.println(description)); //STream<Event>
+		
+		//IMPORTANT: original list 'events' is not changed 
+		
+		//return all UUIDs of Application or User in a LIst 
+		
+		events.stream()
+			.filter(event-> event.getEventType() == EventType.APPLICATION || 
+							event.getEventType() == EventType.USER)
+			.map(event->event.getUuid()) //STream of UUID, Stream<UUID>
+			.collect(Collectors.toList()); // will return a List of UUID, LIST<UUID>
+		
+		//in Parallel
+		
+				events.parallelStream()
+					.filter(event-> event.getEventType() == EventType.APPLICATION || 
+									event.getEventType() == EventType.USER)
+					.map(event->event.getUuid()) //STream of UUID, Stream<UUID>
+					.collect(Collectors.toList()); // will return a List of UUID, LIST<UUID>
+				
+				
+				//check if there is at least one SYSTEM event in the list 
+				boolean result1 = events.stream()
+					.anyMatch(event->event.getEventType()
+					.equals(EventType.SYSTEM));
+				
+				
+				
+				
+				//check if all events in the list have a description (i.e.not null or empty)
+				boolean result2 = events.stream()
+						.filter(event->event.getEventType().equals(EventType.APPLICATION))
+						.allMatch(event->event.getDescription() != null && !event.getDescription().isEmpty());
+				
+				
+				//calculate the SUM of this ARRAY
+				int[] numbers = {1,2,3};
+				
+				int result3  = Arrays.stream(numbers)  //CREATE = > IntStream
+						.sum(); //TERMINAL => int
+				
+				//calculate the total length of description characters
+				//STREAM of INTEGER HAVE NO SUM OR AVG FUNCTION 
+				int result4 = events.stream()
+					.mapToInt(event->event.getDescription().length())
+					.sum();
+				
+				int result5 = events.stream().map(Event::getDescription).mapToInt(String::length).sum();
+				
+				int result6 = events.stream()
+						.peek(event->System.out.println("peek1__"+event))
+						.mapToInt(event->event.getDescription().length())
+						.peek(event->System.out.println("peek2__"+event))
+						.parallel()
+						.sequential()
+						.sum();
+
+	}
+
+}

@@ -1,0 +1,30 @@
+package com.mycompany.rep;
+
+import java.util.UUID;
+
+public class Task2 {
+	
+/*
+ ----------
+Task 2
+----------
+Implement an event processor for which interested systems can register (also unregister). All registered systems will be informed about new events (events have a type, ...) - and maybe execute a specific action.
+=> Observer/Listener pattern
+
+ */
+
+	public static void main(String[] args) {
+		new EventProcessor()
+			.register(new ConsoleSubscriber("sub0"))
+			.register(System.out::println) //event -> System.out.println(event)
+			.register(event->System.out.println("sub2:"+event))
+			.register(event->System.out.println("sub3:"+event))
+			.publish(new Event(UUID.randomUUID(),EventType.SYSTEM,"system will be down in 10 mins"));
+		
+		
+		//last task: add a class ConsoleSubscriber - it should always print to SYSO
+		
+
+	}
+
+}

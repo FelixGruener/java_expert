@@ -1,0 +1,16 @@
+package com.mycompany.java8;
+
+public class Invoker {
+
+	public static void main(String[] args) {
+		
+		
+		Person person = new Person().setName("Michael").setEmail("michael@java.at");
+		Extractor.extractAndPrint(p-> p.getName(), person);
+		Extractor.extractAndPrint(Person::getName, person);
+		
+		Extractor.set((p,value)-> p.setName(value),person,"Thomas");
+		Extractor.set(Person::setName,person,"Thomas");
+	}
+
+}

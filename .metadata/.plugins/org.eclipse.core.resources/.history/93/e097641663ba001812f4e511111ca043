@@ -1,0 +1,14 @@
+
+public class Cache<T> {
+	
+	private T cachedElement;
+
+	public Tt getCachedElement() {
+		return cachedElement;
+	}
+
+	public void setCachedElement(Object cachedElement) {
+		this.cachedElement = cachedElement;
+	}
+
+}

@@ -1,0 +1,16 @@
+
+public class MainApp {
+
+	public static void main(String[] args) {
+		Cache<String> cache = new Cache<>();
+		
+		cache.setCachedElement("abc");
+		
+		String text = cache.getCachedElement();
+		
+		System.out.print(text);
+			
+
+	}
+
+}

@@ -1,0 +1,17 @@
+package com.mycompany.java8;
+
+public class Programm {
+	
+	//we add something that implements the interface 
+	public Programm add(myInterface my) {
+		return this;
+	}
+
+	@Override
+	public void execute() {
+	
+		
+	}
+	
+
+}

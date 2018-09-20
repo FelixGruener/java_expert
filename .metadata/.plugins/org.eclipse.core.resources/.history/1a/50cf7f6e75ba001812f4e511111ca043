@@ -1,0 +1,10 @@
+package com.mycompany.java8;
+
+@FunctionalInterface
+public interface myInterface {
+	
+	public void execute();
+	
+	
+
+}

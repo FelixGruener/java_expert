@@ -1,0 +1,25 @@
+package at.javatraining.java8.task1;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainApp {
+	public static void main(String[] args) {
+		List<Movie> movies = new ArrayList<>(); // you don't need any sample data to solve the exercises ;-)
+		
+		// TODO return all titles of action movies with Arnold Schwarzenegger as list.
+		
+		// TODO return average length of love stories produced in Bollywood.
+
+		// TODO does the database contain a drama that lasts shorter than 50 min?
+
+		// TODO how many movies with Christoph Waltz, not produced in hollywood are in the "database"?
+
+		// TODO return a list containing (title, corresponding actors as comma-separated string) objects for all comedies.
+
+		// TODO implement a method processMovies(...). it should be possible to pass the movie list,
+		// an optional (!) filter, a mapping function and the action to perform. the method should
+		// offer a parameter so that the caller can set if the list should be processed sequentially
+		// or parallel.
+	}
+}

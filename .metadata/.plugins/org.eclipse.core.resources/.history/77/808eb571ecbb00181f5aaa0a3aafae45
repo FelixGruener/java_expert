@@ -1,0 +1,28 @@
+package at.javatraining.java8.task3;
+
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+public class MainApp {
+	// read the text file "news.txt" and return all lines which contain "swisscom" (case ignored) and
+	// were published in 2018 as list of (title, date) objects
+	
+	public static void main(String[] args) throws Exception {
+		
+		//Path path = Paths.get("news.txt",Charset.forName("UTF-8"));
+		//System.out.println(path.toAbsolutePath());
+		
+		Files.lines(Paths.get("news.txt"),StandardCharsets.UTF_8) //CREATE = > Stream<String>
+			.filter(line->line.toLowerCase().contains("swisscom") &&
+					line.endsWith("2018"))
+			.forEach(System.out::println);
+			
+			
+			
+		
+	}
+	
+}

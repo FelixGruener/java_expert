@@ -1,0 +1,7 @@
+package com.javatraining.java8;
+
+public interface Filter {
+	
+	int applyFilter(int...numbers);
+
+}

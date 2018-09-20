@@ -1,0 +1,60 @@
+package com.mycompany.rep;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+
+
+/*
+----------
+Task 1
+----------
+Implement a method processNames(...). It should be possible to pass a list of names (of type String), a condition and the action which should be executed for each name to this method.
+=> condition: use Predicate<String> interface, method test(...)
+=> action: use Consumer<String> interface, method accept(...)
+
+----------
+Task 2
+----------
+Implement an event processor for which interested systems can register (also unregister). All registered systems will be informed about new events (events have a type, ...) - and maybe execute a specific action.
+=> Observer/Listener pattern
+
+*/
+
+public class Task1 {
+
+	public static void main(String[] args) {
+		
+		List<String> names = Arrays.asList("Max","Moritz","Susi");
+		
+		processNames(
+				names,
+				n ->n.length() <= 3, //name of parameter need not to be teh same as in interface declaration 
+				name -> System.out.println(name)
+				);
+	}
+	
+	private static void processNames(List<String> names,Predicate<String> condition, Consumer<String> action) {
+		
+		//idea is write methods where you can use lambda
+		for (String name:names) {
+			//check the condition
+			if(condition.test(name)) {
+				action.accept(name);
+			}
+		}
+		
+		//using forEach method
+		names.forEach(name->{
+			if(condition.test(name)) {
+				action.accept(name);
+			}
+		});
+		
+		//using stream
+		names.stream().filter(condition).forEach(action);
+		
+	}
+
+}

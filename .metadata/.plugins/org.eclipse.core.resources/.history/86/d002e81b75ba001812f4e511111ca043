@@ -1,0 +1,17 @@
+package com.mycompany.java8;
+
+public class Invoker {
+
+	public static void main(String[] args) {
+		
+		Programm programm = new Programm();
+		programm.add(()->System.out.println("HEllo"))
+				.add(()->{
+					System.out.println("this makes no sense"));
+					System.out.println("Works"));
+				})
+				.execute();
+
+	}
+
+}

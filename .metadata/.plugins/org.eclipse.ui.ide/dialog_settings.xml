@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="ExternalProjectImportWizard">
+		<item value="false" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="\\SG1005z-v2\TGDGRFE5$\Desktop\Repetition3"/>
+			<item value="\\SG1005z-v2\TGDGRFE5$\Desktop\Exercise8"/>
+			<item value="\\SG1005z-v2\TGDGRFE5$\Desktop\Exercise4"/>
+			<item value="\\SG1005z-v2\TGDGRFE5$\Desktop\Exercise2"/>
+			<item value="\\SG1005z-v2\TGDGRFE5$\Desktop\Exercise1"/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value=""/>
+		</list>
+	</section>
+</section>

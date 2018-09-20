@@ -1,0 +1,14 @@
+
+public class CacheInteger {
+	
+	private Object cachedElement;
+
+	public Object getCachedElement() {
+		return cachedElement;
+	}
+
+	public void setCachedElement(Object cachedElement) {
+		this.cachedElement = cachedElement;
+	}
+
+}

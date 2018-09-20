@@ -1,0 +1,9 @@
+package at.javatraining.java8.task2;
+
+public class CaesarCipher {
+	// the method should encrypt the passed plainText (allowed characters: a-zA-Z) using the Cäsar cipher algorithm.
+	public String encrypt(String plainText) {
+		// TODO! implement method - USE A STREAM!
+		return null;
+	}
+}

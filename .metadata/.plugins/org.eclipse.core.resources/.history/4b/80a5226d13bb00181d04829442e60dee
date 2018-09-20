@@ -1,0 +1,21 @@
+package com.mycompany.rep;
+
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+
+public class Task1 {
+
+	public static void main(String[] args) {
+		
+		
+
+	}
+	
+	private static void processNames(List<String> names,Predicate<String> condition, Consumer<String> action) {
+		
+		
+		
+	}
+
+}

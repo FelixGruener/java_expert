@@ -1,0 +1,25 @@
+package calculator;
+
+public class Calculator implements Operation {
+	
+	
+
+	public static void main(String[] args) {
+		
+		Calculator calc = new Calculator();
+		
+		int result = calc.operate(5,2);
+		
+		System.out.println(result);
+
+	}
+
+
+	@Override
+	public int operate(int number1, int number2) {
+		int sum;
+		sum = number1 + number2; 
+		return sum; 
+	}
+
+}

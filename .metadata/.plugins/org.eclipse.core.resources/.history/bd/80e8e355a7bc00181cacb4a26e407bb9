@@ -1,0 +1,21 @@
+package com.mycompaby.java8;
+
+public class MainApp {
+
+	public static void main(String[] args) {
+		String a = "abc";
+		String b = "abc";
+		String c = "ab";
+		String d = "c";
+		String e = c + d;
+		
+		if(a==b) {
+			System.out.println("a/b => SAME OBJECT"); //YES
+		}
+		if (a==e) {
+			System.out.println("a/e => SAME OBJECT"); //NO
+		}
+		
+	}
+
+}

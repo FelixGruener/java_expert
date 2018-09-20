@@ -1,0 +1,17 @@
+package com.mycompany.java8;
+
+public class MainApp {
+
+	//argument : simple - use CalculatorSimpleImpl --class <className>
+	//argument : extended - use CalculatorExtendedImpl
+	public static void main(String[] args) throws Exception {
+		String className = "com.mycompany.java8.TestClass";
+		
+		Object obj = Class.forName(className).newInstance();
+		
+		TestClass testClass = (TestClass) obj;
+		
+		testClass.testMethod();
+	}
+
+}

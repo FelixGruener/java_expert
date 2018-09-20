@@ -1,0 +1,8 @@
+package com.mycompany.java8;
+
+package com.mycompany.rep;
+public enum EventType {
+	
+	SYSTEM, APPLICATION, USER
+
+}

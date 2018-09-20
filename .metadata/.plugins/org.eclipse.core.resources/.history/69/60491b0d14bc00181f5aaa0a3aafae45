@@ -1,0 +1,32 @@
+package com.mycompany.java8;
+
+public class MainApp {
+
+	//argument : simple - use CalculatorSimpleImpl --class <className>
+	//argument : extended - use CalculatorExtendedImpl
+	public static void main(String[] args) throws Exception {
+		
+		String className = CalculatorSimpleImpl.class.getName();
+		
+		if (args.length == 1) {
+			
+			className = args[0];
+			
+		}
+		
+		
+		
+		Calculator calculator = (Calculator) Class.forName(className).newInstance();
+		
+		System.out.println(calculator.sum(1,2));
+		
+		//TestClass testClass = (TestClass) obj;
+		
+		//testClass.testMethod();
+		
+		
+		
+		
+	}
+
+}
